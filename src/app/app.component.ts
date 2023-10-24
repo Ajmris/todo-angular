@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  newTask: string='';
   tasksList: Array<string>=[];
   tasksDone: Array<string>=[];
   // W konstruktorze lub inicjalizacji komponentu
@@ -16,17 +15,19 @@ export class AppComponent {
       this.tasksList = JSON.parse(storedTasks);
     }
   }
-  add(){
-    this.tasksList.push(this.newTask);
-    this.newTask='';
+  private updateLocalStorage() {
     localStorage.setItem('tasksList', JSON.stringify(this.tasksList));
+  }
+  add(task: string){
+    this.tasksList.push(task);
+    this.updateLocalStorage();
   }
   remove(task: string){
     this.tasksList=this.tasksList.filter(e=>e !== task);
+    this.updateLocalStorage();
   }
   done(task: string){
     this.tasksDone.push(task);
     this.remove(task);
-    console.log(this.tasksList);
   }
 }
