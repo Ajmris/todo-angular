@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   tasksList: Array<string>=[];
   tasksDone: Array<string>=[];
   // W konstruktorze lub inicjalizacji komponentu
@@ -14,6 +14,9 @@ export class AppComponent {
     if (storedTasks) {
       this.tasksList = JSON.parse(storedTasks);
     }
+  }
+  ngOnInit(): void {
+    this.tasksList=['Sprzątanie kuwety', 'Nauka Angulara', 'Podlewanie kwiatów', 'Zakupy'];
   }
   private updateLocalStorage() {
     localStorage.setItem('tasksList', JSON.stringify(this.tasksList));
