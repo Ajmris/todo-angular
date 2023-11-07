@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TaskService } from '../services/tasks.service';
 
 @Component({
   selector: 'app-add-task',
@@ -6,17 +7,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit{
-  newTask: string | undefined;
-
-  @Output()
-  emitTask=new EventEmitter<string>();
+  newTask: string='';
   
-  constructor(){}
+  constructor(private tasksService: TaskService){}
   ngOnInit(){
 
   }
   add(){
-    this.emitTask.emit(this.newTask);
+    this.tasksService.add(this.newTask);
     this.newTask='';
   }
 }

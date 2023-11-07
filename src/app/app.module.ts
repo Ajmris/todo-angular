@@ -7,6 +7,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { TodoTaskComponent } from './todo-task/todo-task.component';
 import { DoneTaskComponent } from './done-task/done-task.component';
 import { CommonModule } from '@angular/common';
+import { TaskService } from './services/tasks.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
