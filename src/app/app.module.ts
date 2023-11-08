@@ -9,6 +9,8 @@ import { DoneTaskComponent } from './done-task/done-task.component';
 import { CommonModule } from '@angular/common';
 import { TaskService } from './services/tasks.service';
 import { CheckedDirective } from './shared/checked.directive';
+import { DateDirective } from './shared/date.directive';
+import { TransformTaskPipe } from './shared/transform-task.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CheckedDirective } from './shared/checked.directive';
     AddTaskComponent,
     TodoTaskComponent,
     DoneTaskComponent,
-    CheckedDirective
+    CheckedDirective,
+    DateDirective,
+    TransformTaskPipe
   ],
   imports: [
     BrowserModule,
